@@ -11,52 +11,21 @@ const increase = () => {
 }
 
 const decrease = () => {
-    if (fontSize <= 21) {
-        return
-    }
+    if (fontSize <= 21) return
     fontSize -= 5
     p.style.fontSize = fontSize + 'px'
 }
 
+
+const colorChanger = () => {
+    const r = Math.floor(Math.random() * 255)
+    const g = Math.floor(Math.random() * 255)
+    const b = Math.floor(Math.random() * 255)
+    
+    p.style.color = `rgb(${r},${g},${b})`
+}
+
 sizeUp.addEventListener('click', increase)
 sizeDown.addEventListener('click', decrease)
+colorBtn.addEventListener('click', colorChanger)
 
-
-//
-
-// fetch("https://api.spacexdata.com/v4/404")
-//     .then((response) => {
-//         return response.json()
-//     })
-//     .then((json) => {
-//         console.log(json)
-//     })
-//     .catch((error) => {
-//         if (error.status === 404) {
-//             return console.error("Page not found")
-//         }
-
-//         return console.error(error)
-//     })
-
-//
-
-fetch("https://api.spacexdata.com/v4/404")
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Response not ok", {
-                cause: response,
-            })
-        }
-
-        return response.json()
-    })
-    .then((json) => {
-        console.log(json)
-    })
-    .catch((error) => {
-        if (error.cause.status === 404) {
-            return console.error("Page not found")
-        }
-        console.error(error)
-    })
